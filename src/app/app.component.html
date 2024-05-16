@@ -2,3 +2,16 @@
   <mat-icon>local_fire_department</mat-icon>
   <span>Ezerarcu Malaga</span>
 </mat-toolbar>
+
+<div class="content-container">
+
+  <div class="top-links">
+    <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Bejelentkezés</a>
+    <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Regisztráció</a>
+  </div>
+
+  <div class="logout-button">
+    <span (click)="logout()">Kijelentkezés</span>
+  </div>
+</div>
+<router-outlet></router-outlet>
