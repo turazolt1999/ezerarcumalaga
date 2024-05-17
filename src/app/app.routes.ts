@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthGuard } from './auth.guard';
-import { GuestGuard } from './guest.guard';
+import { AuthGuard } from './services/auth.guard';
+import { GuestGuard } from './services/guest.guard';
 import { HomeComponent } from './home/home.component';
 import { VideouploadComponent } from './videoupload/videoupload.component';
 

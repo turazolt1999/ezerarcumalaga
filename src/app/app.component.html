@@ -27,9 +27,6 @@
         <button mat-flat-button routerLink="/register" (click)="logout()" color="primary">Regisztráció</button>
       </div>
     </div>
-    <div *ngIf="authService.isLoggedIn()">
-      <div>{{ authService.currentUsersig()?.username }}</div>
-    </div>
   </div>
 </div>
 <router-outlet *ngIf="!isLoading"></router-outlet>
