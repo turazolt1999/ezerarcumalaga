@@ -2,3 +2,24 @@
   <mat-icon>local_fire_department</mat-icon>
   <span>Ezerarcu Malaga</span>
 </mat-toolbar>
+
+<div class="content-container">
+  <div *ngIf="isLoading">
+    <p>Töltés...</p>
+  </div>
+  <div *ngIf="!isLoading">
+    <div *ngIf="!authService.isLoggedIn()">
+      <div class="top-links">
+        <button mat-flat-button routerLink="/login" (click)="logout()" color="primary">Bejelentkezés</button>
+        <button mat-flat-button routerLink="/register" (click)="logout()" color="primary">Regisztráció</button>
+      </div>
+    </div>
+    <div *ngIf="authService.isLoggedIn()">
+      <div>{{ authService.currentUsersig()?.username }}</div>
+      <div class="logout-button">
+        <button mat-flat-button (click)="logout()" color="warn">Kijelentkezés</button>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet *ngIf="!isLoading"></router-outlet>
