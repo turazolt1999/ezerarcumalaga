@@ -11,7 +11,7 @@ export class GuestGuard {
 
   canActivate(): boolean {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
       return false;
     }
     return true;

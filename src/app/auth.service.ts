@@ -13,6 +13,7 @@ export class AuthService {
     firebaseAuth = inject(Auth)
     user$ = user(this.firebaseAuth)
     currentUsersig = signal<UserInterface | null | undefined>(undefined)
+    router: any;
 
     register(
         email: string, username: string, password: string

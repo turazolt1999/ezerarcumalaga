@@ -60,7 +60,7 @@ export class LoginComponent {
       .login(rawForm.email, rawForm.password)
       .subscribe({
         next: () => {
-          this.router.navigateByUrl('/');
+          this.router.navigateByUrl('/home');
           this.loginValid = true;
         },
         error: (err) => {

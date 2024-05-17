@@ -1,6 +1,16 @@
-<mat-toolbar color="primary">
+<mat-toolbar *ngIf="!authService.isLoggedIn()" color="primary">
   <mat-icon>local_fire_department</mat-icon>
   <span>Ezerarcu Malaga</span>
+</mat-toolbar>
+<mat-toolbar *ngIf="authService.isLoggedIn()" color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Ezerarcu Malaga</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="logout()" routerLink="/">
+    <mat-icon>logout</mat-icon>
+  </button>
 </mat-toolbar>
 
 <div class="content-container">
@@ -16,9 +26,6 @@
     </div>
     <div *ngIf="authService.isLoggedIn()">
       <div>{{ authService.currentUsersig()?.username }}</div>
-      <div class="logout-button">
-        <button mat-flat-button (click)="logout()" color="warn">Kijelentkezés</button>
-      </div>
     </div>
   </div>
 </div>

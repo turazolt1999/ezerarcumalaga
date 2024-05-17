@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
   title = 'ezerarcumalaga';
   authService = inject(AuthService);
   isLoading = true;
+  router: any;
 
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
