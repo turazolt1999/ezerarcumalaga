@@ -10,16 +10,16 @@
   <div *ngIf="!isLoading">
     <div *ngIf="!authService.isLoggedIn()">
       <div class="top-links">
-        <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Bejelentkezés</a>
-        <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Regisztráció</a>
+        <button mat-flat-button routerLink="/login" (click)="logout()" color="primary">Bejelentkezés</button>
+        <button mat-flat-button routerLink="/register" (click)="logout()" color="primary">Regisztráció</button>
       </div>
     </div>
     <div *ngIf="authService.isLoggedIn()">
       <div>{{ authService.currentUsersig()?.username }}</div>
       <div class="logout-button">
-        <span (click)="logout()">Kijelentkezés</span>
+        <button mat-flat-button (click)="logout()" color="warn">Kijelentkezés</button>
       </div>
     </div>
   </div>
 </div>
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!isLoading"></router-outlet>

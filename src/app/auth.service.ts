@@ -8,6 +8,8 @@ import { UserInterface } from "./user.interface";
 })
 
 export class AuthService {
+    private loggedIn: boolean = false;
+
     firebaseAuth = inject(Auth)
     user$ = user(this.firebaseAuth)
     currentUsersig = signal<UserInterface | null | undefined>(undefined)
@@ -31,16 +33,18 @@ export class AuthService {
             email,
             password
         ).then(() => {
+            this.loggedIn = true;
         });
         return from(promise);
     }
 
     logout(): Observable <void> {
-        const promise = signOut(this.firebaseAuth)
+        const promise = signOut(this.firebaseAuth);
+        this.loggedIn = false;
         return from(promise);
     }
 
     isLoggedIn(): boolean {
-        return !!this.firebaseAuth.currentUser;
+        return this.loggedIn;
     }
 }

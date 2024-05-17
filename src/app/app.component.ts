@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { AuthService } from './auth.service';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,9 @@ import { AuthService } from './auth.service';
     MatCardModule,
     RouterLink,
     RouterLinkActive,
-    HttpClientModule
+    HttpClientModule,
+    MatDividerModule,
+    MatButtonModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
