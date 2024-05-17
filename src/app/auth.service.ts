@@ -16,11 +16,7 @@ export class AuthService {
             this.firebaseAuth, email, password
         ).then((res) => {
             updateProfile(res.user, { displayName: username })
-        })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-            });
+        });
         return from(promise);
     }
 }
