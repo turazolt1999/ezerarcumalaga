@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -22,11 +23,26 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'ezerarcumalaga';
-  http = inject(HttpClient);
+  authService = inject(AuthService);
+  isLoading = true;
+
+  ngOnInit(): void {
+    this.authService.user$.subscribe(user => {
+      if (user) {
+        this.authService.currentUsersig.set({
+          email: user.email!,
+          username: user.displayName!
+        })
+      } else {
+        this.authService.currentUsersig.set(null);
+      }
+      this.isLoading = false;
+    })
+  }
 
   logout(): void {
-    console.log('logout');
+    this.authService.logout();
   }
 }

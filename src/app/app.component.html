@@ -4,14 +4,22 @@
 </mat-toolbar>
 
 <div class="content-container">
-
-  <div class="top-links">
-    <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Bejelentkezés</a>
-    <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Regisztráció</a>
+  <div *ngIf="isLoading">
+    <p>Töltés...</p>
   </div>
-
-  <div class="logout-button">
-    <span (click)="logout()">Kijelentkezés</span>
+  <div *ngIf="!isLoading">
+    <div *ngIf="!authService.isLoggedIn()">
+      <div class="top-links">
+        <a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Bejelentkezés</a>
+        <a routerLink="/register" routerLinkActive="active" ariaCurrentWhenActive="page">Regisztráció</a>
+      </div>
+    </div>
+    <div *ngIf="authService.isLoggedIn()">
+      <div>{{ authService.currentUsersig()?.username }}</div>
+      <div class="logout-button">
+        <span (click)="logout()">Kijelentkezés</span>
+      </div>
+    </div>
   </div>
 </div>
 <router-outlet></router-outlet>
