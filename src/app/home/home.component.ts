@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { StorageService } from '../services/storage.service';
 
 @Component({
     selector: 'app-home',
@@ -14,5 +15,9 @@ import { MatCardModule } from '@angular/material/card';
     ]
 })
 export class HomeComponent {
+  storageService = inject(StorageService);
 
+  ngOnInit(): void {
+    this.storageService.fileList();
+  }
 }
