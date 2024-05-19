@@ -10,7 +10,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -55,7 +54,6 @@ export class AppComponent implements OnInit {
   }
 
   videoUpload(): void {
-    console.log("anyád");
     this.router.navigateByUrl('/video_upload');
   }
 }
